@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title></title>
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/lib-npm/bootstrap/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="/lib-npm/bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/lib-npm/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/lib-npm/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/site.css">
+    <!-- endinject -->
+    <!-- inject:woff2-->
+    <!-- endinject -->
+    <base href="/">
+</head>
+<body ng-app="app">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" ui-sref="#">Project name</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a ui-sref="/">Home</a></li>
+                    <li><a ui-sref="/about">About</a></li>
+                    <li><a ui-sref="/contact">Contact</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Nav header</li>
+                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ui-sref="/navbar/">Default</a></li>
+                    <li><a ui-sref="/navbar-static-top/">Static top</a></li>
+                    <li class="active"><a ui-sref="login">login <span class="sr-only">(current)</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div ui-view class="container-fluid">
+
+    </div>
+    <!-- inject:js -->
+    <script src="/lib-npm/jquery/jquery.min.js"></script>
+    <!--<script src="/lib-npm/jquery/jquery.slim.min.js"></script>-->
+    <script src="/lib-npm/bootstrap/js/bootstrap.js"></script>
+    <!--<script src="/lib-npm/bootstrap/js/bootstrap.min.js"></script>-->
+    <script src="/lib-npm/angular/angular.min.js"></script>
+    <script src="/lib-npm/angular-ui-router/angular-ui-router.min.js"></script>
+    <script src="/scripts/app.js"></script>
+    <script src="/app/app.route.js"></script>
+    <!-- endinject -->
+</body>
+</html>
