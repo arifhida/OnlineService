@@ -13,10 +13,10 @@ namespace OnlineService.Data.Abstracts
         Task<IEnumerable<T>> AllIncluding(params Expression<Func<T, object>>[] includeProperties);
         Task<IEnumerable<T>> GetAll();
         Task<int> Count();
-        T GetSingle(int id);
+        T GetSingle(long id);
         T GetSingle(Expression<Func<T, bool>> predicate);
         T GetSingle(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includeProperties);
-        Task<T> GetSingleAsync(int id);
+        Task<T> GetSingleAsync(long id);
         Task<T> GetSingleAsync(Expression<Func<T, bool>> predicate);
         Task<T> GetSingleAsync(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includeProperties);
         Task<IEnumerable<T>> FindByAsync(Expression<Func<T, bool>> predicate);

@@ -58,7 +58,7 @@ namespace OnlineService.API
 
             services.AddDbContext<OnlineServiceContext>(
                 options => options.UseNpgsql(Configuration["DbContextSettings:ConnectionString"],
-                b => b.MigrationsAssembly("CoreIdentity.API"))
+                b => b.MigrationsAssembly("OnlineService.API"))
                 );
 
             services.AddScoped<IUserRepository, UserRepository>();
