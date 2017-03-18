@@ -20,6 +20,7 @@ using Microsoft.EntityFrameworkCore;
 using OnlineService.API.Options;
 using System.Net;
 using Microsoft.AspNetCore.Diagnostics;
+using OnlineService.API.Models.Mappings;
 
 namespace OnlineService.API
 {
@@ -78,7 +79,7 @@ namespace OnlineService.API
                                  .Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
-
+            AutoMapperConfiguration.Configure();
 
             var jwtAppSettingOptions = Configuration.GetSection(nameof(JwtIssuerOptions));
             services.Configure<JwtIssuerOptions>(options =>
