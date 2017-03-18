@@ -37,14 +37,13 @@ namespace OnlineService.Data
             modelBuilder.Entity<Role>().Property(e => e.CreatedBy).ForNpgsqlHasDefaultValue("System");
 
             modelBuilder.Entity<UserInRole>().ToTable("UserInRole");
-            modelBuilder.Entity<UserInRole>().Property(e => e.CreatedDate).ForNpgsqlHasDefaultValueSql("current_timestamp");
-            modelBuilder.Entity<UserInRole>().Property(e => e.ModifiedDate).ForNpgsqlHasDefaultValueSql("current_timestamp");
-            modelBuilder.Entity<UserInRole>().Property(e => e.isActive).ForNpgsqlHasDefaultValue(true);
-            modelBuilder.Entity<UserInRole>().Property(e => e.CreatedBy).ForNpgsqlHasDefaultValue("System");
-            modelBuilder.Entity<UserInRole>().HasOne(a => a.User)
-                .WithMany(u => u.UserRole);
-            modelBuilder.Entity<UserInRole>().HasOne(x => x.Role)
-                .WithMany(r => r.RoleUser);
+            modelBuilder.Entity<UserInRole>().HasKey(x => new { x.UserId, x.RoleId });
+            modelBuilder.Entity<UserInRole>().HasOne(x => x.User).WithMany(r => r.UserRole)
+                .HasForeignKey(x => x.UserId).OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<UserInRole>().HasOne(x => x.Role).WithMany(r => r.RoleUser)
+                .HasForeignKey(x => x.RoleId).OnDelete(DeleteBehavior.Cascade);        
+           
+            
             base.OnModelCreating(modelBuilder);
         }
 

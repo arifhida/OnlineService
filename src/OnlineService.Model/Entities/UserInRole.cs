@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 
 namespace OnlineService.Model.Entities
 {
-    public class UserInRole : EntityBase
+    public class UserInRole 
     {
+        public long UserId { get; set; }
         public User User { get; set; }
+        public long RoleId { get; set; }
         public Role Role { get; set; }
     }
 }

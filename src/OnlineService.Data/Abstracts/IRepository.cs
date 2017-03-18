@@ -29,6 +29,5 @@ namespace OnlineService.Data.Abstracts
         Task Commit();
     }
     public interface IUserRepository : IEntityBaseRepository<User> { }
-    public interface IRoleRepository : IEntityBaseRepository<Role> { }
-    public interface IUserInRoleRepository : IEntityBaseRepository<UserInRole> { }
+    public interface IRoleRepository : IEntityBaseRepository<Role> { }    
 }

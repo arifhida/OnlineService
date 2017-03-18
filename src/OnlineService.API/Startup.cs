@@ -18,6 +18,8 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using OnlineService.Data;
 using Microsoft.EntityFrameworkCore;
 using OnlineService.API.Options;
+using System.Net;
+using Microsoft.AspNetCore.Diagnostics;
 
 namespace OnlineService.API
 {
@@ -114,17 +116,39 @@ namespace OnlineService.API
                builder.AllowAnyOrigin()
                .AllowAnyHeader()
                .AllowAnyMethod());
+            app.UseExceptionHandler(
+                builder =>
+                {
+                    builder.Run(
+                        async context =>
+                        {
+                            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                            context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+                            var error = context.Features.Get<IExceptionHandlerFeature>();
+                            if (error != null)
+                            {
+                                context.Response.AddApplicationError(error.Error.Message);
+                                await context.Response.WriteAsync(error.Error.Message).ConfigureAwait(false);
+                            }
+                            else
+                            {
+                                await context.Response.WriteAsync("Error").ConfigureAwait(false);
+                            }
+                        });
+                });
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            
             app.UseJwtBearerAuthentication(new JwtBearerOptions
             {
                 AutomaticAuthenticate = true,
                 AutomaticChallenge = true,
                 TokenValidationParameters = tokenValidationParameters
             });
+            
             app.UseMvcWithDefaultRoute();
             app.Run(async (context) =>
             {
