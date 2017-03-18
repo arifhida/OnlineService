@@ -62,8 +62,7 @@ namespace OnlineService.API
                 );
 
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IRoleRepository, RoleRepository>();
-            services.AddScoped<IUserInRoleRepository, UserInRoleRepository>();
+            services.AddScoped<IRoleRepository, RoleRepository>();            
             services.AddCors();
 
             services.Configure<RazorViewEngineOptions>(options =>
