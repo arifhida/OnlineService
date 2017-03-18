@@ -15,7 +15,7 @@ namespace OnlineService.API.Models
         public string FullName { get; set; }
         public string Email { get; set; }
         public string MobileNo { get; set; }
-        public List<RoleViewModel> RoleUser { get; set; }
+        public List<RoleViewModel> Roles { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
